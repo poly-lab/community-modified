@@ -3,13 +3,14 @@ from lib.cuckoo.common.abstracts import Signature
 class Cmd(Signature):
     name = "cmd"
     description = "use cmd"
-    severity = 2
+    severity = 1
     confidence = 50
     categories = ["cmd"]
     authors = ["liebesu"]
     minimum = "1.2"
       def run(self):
-        file_indicators = ["C:\\Windows\\System32\\cmd.exe$"]
+        file_indicators = ["C:\\Windows\\System32\\cmd.exe$,"
+                           "C:\\windows\\cmd.exe"]
          found = True
         for indicator in file_indicators:
             file_match = self.check_file(pattern=indicator, regex=True, all=True)
